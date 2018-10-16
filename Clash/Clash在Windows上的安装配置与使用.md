@@ -88,7 +88,7 @@ FINAL,,Proxy
 
 如果觉得麻烦或者不会做，可以下载我做好的 [clash-win64-后台.zip](https://github.com/meishixiu/note/raw/master/Clash/clash-win64-后台.zip)，只需要把它解压后放到 `clash-win64.exe` 同一文件夹内运行即可。
 
-这样我们就做好了一个可以让 `clash-win64.exe` 再后台运行的程序，双击运行 `clash-win64-后台.exe`，`clash-win64.exe` 就启动了。启动后我们会发现看不见任何程序运行的效果，因为他们都在后台运行。要查看的话需要在任务栏上“右键 -> 启动任务管理器 -> 进程”中去查看。如果要关闭或重启 Clash，只需要结束掉 `clash-win64.exe` 的进程就可以了，如下图所示。
+这样我们就做好了一个可以让 `clash-win64.exe` 在后台运行的程序，双击运行 `clash-win64-后台.exe`，`clash-win64.exe` 就启动了。启动后我们会发现看不见任何程序运行的效果，因为他们都在后台运行。要查看的话需要在任务栏上“右键 -> 启动任务管理器 -> 进程”中去查看。如果要关闭或重启 Clash，只需要结束掉 `clash-win64.exe` 的进程就可以了，如下图所示。
 
 ![进程](https://github.com/meishixiu/note/raw/master/Clash/进程.png)
 
