@@ -10,7 +10,7 @@
 
 ## 下载并安装
 
-- 先到 [https://github.com/Dreamacro/clash/releases](https://github.com/Dreamacro/clash/releases) 这里下载最新版的 `clash-win64.zip` 压缩包到电脑上；
+- 先到 [https://github.com/Dreamacro/clash/releases](https://github.com/Dreamacro/clash/releases) 下载最新版的 `clash-win64.zip` 压缩包到电脑上；
 - 把压缩包里的 `clash-win64.exe` 解压出来，放到任意你想放的地方；
 - 第一次运行 `clash-win64.exe` 会看到下面的两行提示，意思是：
 1. 没有在 `C:\Users\你的电脑用户名\.config\clash` 文件夹中找到配置文件，软件自动创建了一个空的 `config.yml` 配置文件；
