@@ -5,6 +5,7 @@
 ## 环境
 
 - Windows 7 旗舰版
+- clash-win64 v0.8.0
 
 
 ## 下载并安装
@@ -12,7 +13,7 @@
 - 先到 [https://github.com/Dreamacro/clash/releases](https://github.com/Dreamacro/clash/releases) 这里下载最新版的 `clash-win64.zip` 压缩包到电脑上；
 - 把压缩包里的 `clash-win64.exe` 解压出来，放到任意你想放的地方；
 - 第一次运行 `clash-win64.exe` 会看到下面的两行提示，意思是：
-1. 没有在 `C:\Users\你的电脑用户名\.config\clash` 文件夹中找到配置文件，软件自动创建了一个空的 `config.ini` 配置文件；
+1. 没有在 `C:\Users\你的电脑用户名\.config\clash` 文件夹中找到配置文件，软件自动创建了一个空的 `config.yml` 配置文件；
 2. 没有找到 MMDB IP 地址库，软件自动下载中；
 ```
 ←[36mINFO←[0m[0000] Can't find config, create a empty file
@@ -23,25 +24,26 @@
 
 ## 配置
 
-对于新手，估计最难的地方就是如何配置了，这里有一个 [配置文件的详细说明示例](https://github.com/Hackl0us/SS-Rule-Snippet/blob/master/LAZY_RULES/clashX.ini)，大家把它复制下来，在它的基础上进行修改会简单很多。
+对于新手，估计最难的地方就是如何配置了，这里有一个 [配置文件的详细说明示例](https://github.com/Hackl0us/SS-Rule-Snippet/blob/master/LAZY_RULES/clash.yml)，大家把它复制下来，在它的基础上进行修改会简单很多。
 
 这里特别提一下我在配置过程中遇到的坑：
 
 1. 节点名称和节点组名称不能有特殊符号,好像圆括号也不行，否则软件启动时会报错；
 2. ss 的混淆不能使用 `tls` 混淆，只能用 `http` 混淆，否则节点连不上 ( 具体原因不明，macOS 上就没问题 )。
 
-我的这个配置 [config.ini](https://github.com/meishixiu/note/blob/master/Clash/config.ini) 就是根据上面的那个配置示例修改而来。
+我的这个配置 [config.yml](https://github.com/meishixiu/note/blob/master/Clash/config.yml) 就是根据上面的那个配置示例修改而来。
 
 ### 大致解释一下这个配置文件
 
-- `[General]` 部分的常规配置的每一行我已经在里面写了注释这里就不多说；
-- `[Proxy]` 部分配置了大量的节点信息 ( 节点的 IP 地址和连接密码我已经去掉了 )；
-- `[Proxy Group]` 部分是整个配置文件的核心，我的配置在这里设置了三个代理组，其中两个类型为 `url-test` 的自动测速组 ( 因为我有两家机场，所以把他们两家的节点各分成一组 )。还有一个名叫 `Proxy` ，类型为 `select` 的代理组，这个组里先填写了两家机场的自动测速组的组名 “`Auto星辰, Auto老板娘,`” 然后再填入所有的节点名称。这样做的目的是在软件启动后可以手动选择需要使用的节点或者节点组，至于在 Windows 上如何选择节点，下文中有说明。
-- `[Rule]` 部分是 `Rule` 模式的规则，我的这些规则取自 [lhie1](https://github.com/lhie1/Rules) 大佬那里的规则。最后有两条兜底规则比较特殊：一条是在匹配规则的时候，如果上面的规则都没匹配到，而解析出来又是中国 IP 则走直连；一条是在匹配规则的时候，如果上面的规则都没匹配到，而解析出来又不是中国 IP 则走代理。新手如果还是无法理解的话这两条规则不建议修改。
+- 前面几行的常规配置每一行里面写了注释这里就不多说了；
+- `Proxy:` 部分配置了大量的节点信息，其中一个我自建的日本节点，两家机场的港澳台节点 ( 节点的 IP 地址和连接密码我已经去掉了 )；
+- `Proxy Group:` 部分是整个配置文件的核心，我的配置在这里设置了三个代理组，其中两个类型为 `url-test` 的自动测速组 ( 因为我有两家机场，所以把他们两家的节点各分成一组 )。还有一个名叫 `Proxy` 类型为 `select` 的代理组，这个组里先填写了两家机场的自动测速组的组名 “`"Auto一号", "Auto二号",`” 然后再填入我的自建节点名 `"日本AWS"` 。这样做的目的是在软件启动后可以手动选择需要使用的节点或者节点组，至于在 Windows 上如何选择节点，下文中有说明。
+- `Rule:` 部分是 `Rule` 模式的规则，我的这些规则取自 [上文中的配置示例](https://github.com/Hackl0us/SS-Rule-Snippet/blob/master/LAZY_RULES/clash.yml)。最后有两条 `最终(兜底)规则` 比较特殊：一条是在匹配规则的时候，如果上面的规则都没匹配到，而解析出来又是中国 IP 则走直连；一条是在匹配规则的时候，如果上面的规则都没匹配到，而解析出来又不是中国 IP 则走代理。新手如果还是无法理解的话这两条规则不建议修改。
 
 ```
-GEOIP,CN,DIRECT
-FINAL,,Proxy
+# 最终规则
+- GEOIP,CN,DIRECT
+- FINAL,,Proxy
 ```
 
 ## 设置系统代理
