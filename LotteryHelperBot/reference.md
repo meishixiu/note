@@ -8,7 +8,7 @@
 
 ---
 
-### 1. [抽奖助手机器人说明](https://github.com/meishixiu/note/blob/master/LotteryHelperBot/bot_explain.md)
+### 1. [抽奖助手机器人使用说明](https://github.com/meishixiu/note/blob/master/LotteryHelperBot/bot_explain.md)
 
 ### 2. [抽奖活动导航频道说明](https://github.com/meishixiu/note/blob/master/LotteryHelperBot/channel_explain.md)
 
