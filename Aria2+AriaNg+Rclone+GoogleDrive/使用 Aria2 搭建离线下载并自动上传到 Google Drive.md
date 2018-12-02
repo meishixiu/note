@@ -406,7 +406,7 @@ echo "★[$endDate] Successful"
 echo "----------------------------------------------------------------------------"
 ```
 
-改为
+改为：
 
 ```shell
 #!/bin/bash
@@ -415,9 +415,7 @@ export PATH
 python3 /home/work_upload.py > /dev/null
 ```
 
-
-
-把
+把：
 
 ```shell
 #!/bin/bash
@@ -430,7 +428,7 @@ echo "★[$endDate] Successful"
 echo "----------------------------------------------------------------------------"
 ```
 
-改为
+改为：
 
 ```shell
 #!/bin/bash
