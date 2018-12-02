@@ -1,0 +1,9 @@
+# filter rule file
+- *.aria2
+- *.url
+- *.torrent
+- *.mht
+- *.html
+- *.htm
+- *.rtf
+- *.nfo
