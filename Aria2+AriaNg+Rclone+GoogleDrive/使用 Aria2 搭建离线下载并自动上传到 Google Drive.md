@@ -4,7 +4,7 @@
 
 
 
-##安装
+## 安装
 
 下面介绍如果搭建一个自己的离线下载并上传到 GD 的环境。
 
@@ -440,4 +440,12 @@ python3 /home/clear_down.py > /dev/null
 ```
 
 也就是删掉多余的输出，并且在我们的命令之后添加 ` > /dev/null`
+
+
+
+## 使用
+
+### iOS 平台在线播放
+
+iOS 上可以在 [nPlayer](https://itunes.apple.com/app/id1116905928) 的 **网络** 里添加 `Google Drive` ，登录账号后就可以在线看片了。另外还可以使用 nPlayer 投屏到电视上播放。
 
