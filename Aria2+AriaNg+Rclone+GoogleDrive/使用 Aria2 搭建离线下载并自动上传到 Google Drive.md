@@ -1,18 +1,18 @@
 ## 背景
 
-大家都知道，现在用迅雷和百度网盘很难下载 AV 了，115 网盘又太贵。而对于时间久远或者比较冷门的种子，在没有迅雷的镜像加速服务器作为支撑的话下载速度还是比较慢的，让我用自己的电脑一天 24 小时的开机下载又挺心疼。所以我们可以考虑买一个便宜的、无限流量的、还能抗投诉的 VPS 来做自己的离线下载服务器，下载完后自动上传到 edu 无限容量 Google Drive ( 以后简称 GD ) 里存储，再用 iOS 上的播放软件 nPlayer 登录 Google Drive 实现在线观看。
+大家都知道，现在用迅雷和百度网盘很难下载 AV 了，115 网盘又太贵。而对于时间久远或者比较冷门的种子，在没有迅雷的镜像加速服务器作为支撑的话下载速度还是比较慢的，用自己的电脑一天 24 小时的开机下载又挺心疼。所以我们可以考虑买一个便宜的、无限流量的、还能抗投诉的 VPS 来做自己的离线下载服务器，下载完后自动上传到 edu 无限容量 Google Drive ( 以后简称 GD ) 里存储，再用 iOS 上的播放软件 nPlayer 登录 Google Drive 实现在线观看。
 
 
 
 ## 安装
 
-下面介绍如果搭建一个自己的离线下载并上传到 GD 的环境。
+下面介绍如何搭建一个自己的离线下载并上传到 GD 的环境。
 
 
 
 ### 系统环境
 
-我自己的环境是 CentOS 7 ，其他 Linux 发行版请自行调整相关命令或系统环境的配置，但 VPS 必须是 `KVM` 架构！
+我的系统是 CentOS 7 ，其他 Linux 发行版请自行调整相关命令或系统环境配置，但 VPS 必须是 `KVM` 架构！
 
 
 
@@ -30,7 +30,7 @@ yum install -y wget && wget -O install.sh http://download.bt.cn/install/install_
 
 面板安装好后，通过浏览器打开并登录面板，在面板的 **软件管理** 里面安装 `Nginx` 和 `Redis`。
 
-其中，`Nginx` 是用来作为访问 [AriaNg](http://ariang.mayswind.net/zh_Hans/) 的服务器用的；`Redis` 是用来做上传到  GD 的任务队列的，如果不做队列处理，大量任务同时上传 GD 的话会出现很多问题。
+其中，`Nginx` 是用来作为访问 [AriaNg](http://ariang.mayswind.net/zh_Hans/) 的服务器用的；`Redis` 是用来做上传到  GD 的任务队列的，如果不做队列处理，大量任务同时上传到 GD 的话会出现很多问题。
 
 
 
@@ -38,7 +38,7 @@ yum install -y wget && wget -O install.sh http://download.bt.cn/install/install_
 
 `Aria2` 是一款开源、轻量级的多协议命令行下载工具，支持 `HTTP/HTTPS`、`FTP`、`SFTP`、`BitTorrent` 和 `Metalink` 协议，我们以后的下载任务都会交给它。
 
-首先我们进入 `home` 目录：
+首先我们进入 `/home` 目录：
 
 ```shell
 cd /home
@@ -50,9 +50,9 @@ cd /home
 wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/aria2.sh && chmod +x aria2.sh && bash aria2.sh
 ```
 
-最后打开配置文件 `/root/.aria2/aria2.conf`，替换为 [aria2.conf](https://github.com/meishixiu/note/raw/master/Aria2+AriaNg+Rclone+GoogleDrive/aria2.conf)
+打开配置文件 `/root/.aria2/aria2.conf`，替换为 [aria2.conf](https://github.com/meishixiu/note/raw/master/Aria2+AriaNg+Rclone+GoogleDrive/aria2.conf) 里面的配置
 
-RPC 授权令牌 `rpc-secret` 自己随便换一个；
+最后把里面的 RPC 授权令牌 `rpc-secret` 自己随便换一个；
 
 文件的保存路径 `dir` 我用的是后面要安装的 `AriaNg` 网站的一个子目录，这样做的目的是如果需要通过网站在线浏览下载的文件列表，可以稍微改改 `Nginx` 的网站配置来实现，如果没有这样的需求，那可以随意换一个下载目录。
 
@@ -393,7 +393,7 @@ chmod +x /home/autoupload.sh
 
 ![计划任务不写日志](https://github.com/meishixiu/note/raw/master/Aria2+AriaNg+Rclone+GoogleDrive/image/计划任务不写日志.png)
 
-打开 `/www/server/cron` 这个文件夹，里面存放了刚才由宝塔面板创建的两个计划任务脚本 ( 不带 `.log` 的那两个文件 )，点击左边的 **编辑**，把：
+打开 `/www/server/cron` 这个文件夹，里面存放了刚才由宝塔面板创建的两个计划任务脚本 ( 不带 `.log` 的那两个文件 )，点击右边的 **编辑**，把：
 
 ```shell
 #!/bin/bash
@@ -438,6 +438,10 @@ python3 /home/clear_down.py > /dev/null
 ```
 
 也就是删掉多余的输出，并且在我们的命令之后添加 ` > /dev/null`
+
+
+
+ **至此，所有安装、配置的工作已全部完成。**
 
 
 
