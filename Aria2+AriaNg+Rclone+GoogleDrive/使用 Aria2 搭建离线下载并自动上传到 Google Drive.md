@@ -447,3 +447,8 @@ python3 /home/clear_down.py > /dev/null
 
 iOS 上可以在 [nPlayer](https://itunes.apple.com/app/id1116905928) 的 **网络** 里添加 `Google Drive` ，登录账号后就可以在线看片了。另外还可以使用 nPlayer 投屏到电视上播放。
 
+
+
+## 转载
+
+转载请保留此链接: [https://github.com/meishixiu/note/blob/master/Aria2+AriaNg+Rclone+GoogleDrive/%E4%BD%BF%E7%94%A8%20Aria2%20%E6%90%AD%E5%BB%BA%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD%E5%B9%B6%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%E5%88%B0%20Google%20Drive.md](https://github.com/meishixiu/note/blob/master/Aria2+AriaNg+Rclone+GoogleDrive/%E4%BD%BF%E7%94%A8%20Aria2%20%E6%90%AD%E5%BB%BA%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD%E5%B9%B6%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%E5%88%B0%20Google%20Drive.md)
