@@ -70,7 +70,7 @@ unzip AriaNg-1.0.0.zip
 
 `AriaNg` 的程序安装好了，下面是设置 `AriaNg` ，让它与 `Aria2` 能够连接 ( 通信 )。
 
-浏览器访问 [http://lixian.xxx.com](http://lixian.xxx.com) ，点击右侧的 **AriaNg 设置** ，再点上面的 **PRC** 选项卡，把 `Aria2 RPC 地址` 和 `Aria2 RPC 密钥` 填上，如下图所示：
+浏览器访问 [http://lixian.xxx.com](http://lixian.xxx.com) ，点击左侧的 **AriaNg 设置** ，再点上面的 **PRC** 选项卡，把 `Aria2 RPC 地址` 和 `Aria2 RPC 密钥` 填上，如下图所示：
 
 ![AriaNg 设置](https://github.com/meishixiu/note/raw/master/Aria2+AriaNg+Rclone+GoogleDrive/image/AriaNg设置.png)
 
