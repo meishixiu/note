@@ -81,16 +81,21 @@ def main(argv1, argv2, argv3):
         # 如果是 BT 任务，且“任务相对文件夹路径”是空，用任务名称作为“任务相对文件夹路径”（也就是说，如果下载的种子里只有一个文件的情况）
         if 'bt' in tell_status and task_relative_dir_path == '':
             task_relative_dir_path = tell_status['bt']['name']
+            task_name = task_relative_dir_path
+        else:
+            task_name = os.path.basename( file_path )
 
-        command = 'rclone move "'+file_path+'" "'+google_drive_path+relative_dir_path+task_relative_dir_path+'" --ignore-existing --delete-empty-src-dirs 1>/dev/null 2>/dev/null'
-
+        save_path = google_drive_path+relative_dir_path+task_relative_dir_path
+        command = 'rclone move "'+file_path+'" "'+save_path+'" --ignore-existing --delete-empty-src-dirs 1>/dev/null 2>/dev/null'
+        
     elif num > 1 and os.path.exists(dir_path+task_name):   # 文件数量大于 1 的时候传文件夹
-        command = 'rclone move "'+dir_path+task_name+'" "'+google_drive_path+relative_dir_path+task_name+'" --ignore-existing --delete-empty-src-dirs --ignore-case --filter-from "'+conf['filter_file']+'" 1>/dev/null 2>/dev/null'
+        save_path = google_drive_path+relative_dir_path+task_name
+        command = 'rclone move "'+dir_path+task_name+'" "'+save_path+'" --ignore-existing --delete-empty-src-dirs --ignore-case --filter-from "'+conf['filter_file']+'" 1>/dev/null 2>/dev/null'
 
     else:   # 文件或目录不存在
         sys.exit()
 
-    r.rpush("upload_queue", json.dumps( {"gid":gid, "command":command} ) )  # 添加到上传队列
+    r.rpush("upload_queue", json.dumps( {"gid": gid, "command": command, "task_name": task_name, "save_path": save_path} ) )  # 添加到上传队列
 
 if __name__ == "__main__":
     main(sys.argv[1], sys.argv[2], sys.argv[3])

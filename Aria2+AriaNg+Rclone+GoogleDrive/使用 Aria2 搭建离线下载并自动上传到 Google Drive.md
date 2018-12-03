@@ -38,21 +38,15 @@ yum install -y wget && wget -O install.sh http://download.bt.cn/install/install_
 
 `Aria2` 是一款开源、轻量级的多协议命令行下载工具，支持 `HTTP/HTTPS`、`FTP`、`SFTP`、`BitTorrent` 和 `Metalink` 协议，我们以后的下载任务都会交给它。
 
-首先我们进入 `/home` 目录：
-
-```shell
-cd /home
-```
-
-然后一键安装 [Aria2](https://aria2.github.io/) ：
+一键安装 [Aria2](https://aria2.github.io/) ：
 
 ```shell
 wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/aria2.sh && chmod +x aria2.sh && bash aria2.sh
 ```
 
-打开配置文件 `/root/.aria2/aria2.conf`，替换为 [aria2.conf](https://github.com/meishixiu/note/raw/master/Aria2+AriaNg+Rclone+GoogleDrive/aria2.conf) 里面的配置
+打开配置文件 `/root/.aria2/aria2.conf`，替换为 [aria2.conf](https://github.com/meishixiu/note/raw/master/Aria2+AriaNg+Rclone+GoogleDrive/aria2.conf) 里面的配置；
 
-最后把里面的 RPC 授权令牌 `rpc-secret` 自己随便换一个；
+最后把里面的 Aria2 RPC 密钥 `rpc-secret` 自己随便换一个；
 
 文件的保存路径 `dir` 我用的是后面要安装的 `AriaNg` 网站的一个子目录，这样做的目的是如果需要通过网站在线浏览下载的文件列表，可以稍微改改 `Nginx` 的网站配置来实现，如果没有这样的需求，那可以随意换一个下载目录。
 
@@ -74,11 +68,9 @@ wget https://github.com/mayswind/AriaNg/releases/download/1.0.0/AriaNg-1.0.0.zip
 unzip AriaNg-1.0.0.zip
 ```
 
-如果安装的时候 `AriaNg` 出新版本了，可以在 [这里](https://github.com/mayswind/AriaNg/releases) 找到，然后把上面的下载地址替换成最新版。
+`AriaNg` 的程序安装好了，下面是设置 `AriaNg` ，让它与 `Aria2` 能够连接 ( 通信 )。
 
-`AriaNg` 的程序安装好了，下面是设置 `AriaNg` ，让它与 `Aria2` 能够连接。
-
-浏览器访问 [http://lixian.xxx.com](http://lixian.xxx.com) ，点击右侧的 **AriaNg 设置** ，再点上面的 **PRC** 选项卡，把 `Aria2 RPC 地址` 和 `Aria2 RPC 密钥` 填上，就是上面配置 `Aria2` 时的那个 `RPC 授权令牌`，如下图所示：
+浏览器访问 [http://lixian.xxx.com](http://lixian.xxx.com) ，点击右侧的 **AriaNg 设置** ，再点上面的 **PRC** 选项卡，把 `Aria2 RPC 地址` 和 `Aria2 RPC 密钥` 填上，如下图所示：
 
 ![AriaNg 设置](https://github.com/meishixiu/note/raw/master/Aria2+AriaNg+Rclone+GoogleDrive/image/AriaNg设置.png)
 
@@ -90,13 +82,13 @@ unzip AriaNg-1.0.0.zip
 
 Rclone 是一个用于将文件同步到各大云存储商的命令行工具，同时也支持云存储商之间的文件同步。
 
-安装 Rclone 
+安装 Rclone：
 
 ```shell
 curl https://rclone.org/install.sh | sudo bash
 ```
 
-Rclone 的 Google Drive 授权配置
+Rclone 的 Google Drive 授权配置：
 
 ```shell
 rclone config
@@ -111,13 +103,13 @@ q) Quit config
 n/s/q>n
 ```
 
-输入 `n` 后按回车键继续
+输入 `n` 后按回车键继续：
 
 ```shell
 name> gd  #随便填，后面要用到
 ```
 
-输入 `gd` 后按回车键继续
+输入 `gd` 后按回车键继续：
 
 ```shell
 Type of storage to configure.
@@ -221,7 +213,7 @@ Choose a number from below, or type in your own value
 scope>1
 ```
 
-输入 `1` 后按回车键继续
+输入 `1` 后按回车键继续：
 
 ```shell
 ID of the root folder
@@ -231,7 +223,7 @@ Enter a string value. Press Enter for the default ("").
 root_folder_id>
 ```
 
-什么也不填，直接按回车键继续
+什么也不填，直接按回车键继续：
 
 ```shell
 Service Account Credentials JSON file path
@@ -241,7 +233,7 @@ Enter a string value. Press Enter for the default ("").
 service_account_file>
 ```
 
-什么也不填，直接按回车键继续
+什么也不填，直接按回车键继续：
 
 ```
 Edit advanced config? (y/n)
@@ -250,7 +242,7 @@ n) No
 y/n>n
 ```
 
-输入 `n` 后按回车键继续
+输入 `n` 后按回车键继续：
 
 ```shell
 Remote config
@@ -262,7 +254,7 @@ n) No
 y/n>n
 ```
 
-输入 `n` 后按回车键继续
+输入 `n` 后按回车键继续：
 
 ```
 If your browser doesn't open automatically go to the following link: https://accounts.google.com/o/oauth2/auth?access_type=offline&client_id=202264815644.apps.googleusercontent.com&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive&state=82f32ec9a39f1f00487d512287676715
@@ -270,7 +262,7 @@ Log in and authorize rclone for access
 Enter verification code>4/pwBniPjAj1gnadI8njaqWYE1lfxo92Hlw8NnKYGLYlmBfyopyl-mOWs # 填写验证码
 ```
 
-这时会得到一个链接，把这个链接复制出来，在浏览器中打开，登录谷歌账号，得到一个验证码，填写上去后按回车键继续
+这时会得到一个链接，把这个链接复制出来，在浏览器中打开，登录谷歌账号，得到一个验证码，填写上去后按回车键继续：
 
 ```shell
 Configure this as a team drive?
@@ -279,7 +271,7 @@ n) No
 y/n>y
 ```
 
-输入 `y` 后按回车键继续
+输入 `y` 后按回车键继续：
 
 ```shell
 Fetching team drive list...
@@ -295,7 +287,7 @@ d) Delete this remote
 y/e/d>y
 ```
 
-输入 `y` 后按回车键继续
+输入 `y` 后按回车键继续：
 
 ```shell
 Current remotes:
@@ -314,7 +306,7 @@ q) Quit config
 e/n/d/r/c/s/q>q
 ```
 
-输入 `q` 后按回车键退出
+输入 `q` 后按回车键退出。
 
 
 
@@ -332,13 +324,13 @@ cd Python-3.7.1
 make && make install
 ```
 
-安装完后创建一个软连接到 `/usr/bin/python3`
+安装完后创建一个软连接到 `/usr/bin/python3` ：
 
 ```shell
 ln -s /usr/local/python3/bin/python3 /usr/bin/python3
 ```
 
-使用下面命令查看一下是否生效
+使用下面命令查看一下是否生效：
 
 ```shell
 python3 -V
@@ -367,7 +359,7 @@ chmod +x /home/autoupload.sh
 
 由于我在 `Aria2` 的配置文件 `aria2.conf` 里配置了 `on-download-complete=/home/autoupload.sh` ，他是让  `Aria2` 下载任务完成后执行这个 shell 脚本，所以把这些脚本放到 `/home` 里。
 
-然后根据自己的情况修改 `config.py` 中的配置，比如 **Aria2 RPC 令牌** 、**Aria2 下载目录**、**Google Drive 上传目录**，其他的默认就行了。**Aria2 RPC 地址** 一般也不用修改，使用 `http://127.0.0.1:6800/jsonrpc` 这个就行了，因为就在 VPS 本地执行，使用 127 这个更快一些。
+然后根据自己的情况修改 `config.py` 中的配置，比如 **Aria2 RPC 密钥** 、**Aria2 下载目录**、**Google Drive 上传目录**，其他的默认就行了。**Aria2 RPC 地址** 一般也不用修改，使用 `http://127.0.0.1:6800/jsonrpc` 这个就行了，因为就在 VPS 本地执行，使用 127 这个更快一些。
 
 **其他说明：**
 
@@ -441,7 +433,35 @@ python3 /home/clear_down.py > /dev/null
 
 
 
- **至此，所有安装、配置的工作已全部完成。**
+### 开放端口
+
+根据 `Aria2` 的配置，还需要再开放几个端口
+
+![开启端口](https://github.com/meishixiu/note/raw/master/Aria2+AriaNg+Rclone+GoogleDrive/image/开启端口.png)
+
+
+
+### 邮件通知
+
+如果需要下载任务完成后发送邮件通知，可以在 `config.py` 中开启 `"enable_mail": True,` ，并做好相应的配置。
+
+**提示：**如果要使用 QQ 邮箱发件，请在 **电脑上用浏览器** 打开 QQ 邮箱，然后 **邮箱设置 -> 帐户** 中开启 **SMTP 服务** ，并 **生成授权码**，使用授权码来作为这里的 SMTP 密码。如下图所示：
+
+![QQ邮箱授权码](https://github.com/meishixiu/note/raw/master/Aria2+AriaNg+Rclone+GoogleDrive/image/QQ邮箱授权码.png)
+
+
+
+下面是邮件通知的效果截图和上传后的文件位置截图：
+
+![邮件通知](https://github.com/meishixiu/note/raw/master/Aria2+AriaNg+Rclone+GoogleDrive/image/邮件通知.png)
+
+
+
+![下载结果](https://github.com/meishixiu/note/raw/master/Aria2+AriaNg+Rclone+GoogleDrive/image/下载结果.png)
+
+ 
+
+**至此，所有安装、配置的工作已全部完成。**
 
 
 
@@ -455,4 +475,4 @@ iOS 上可以在 [nPlayer](https://itunes.apple.com/app/id1116905928) 的 **网�
 
 ## 转载
 
-转载请保留此链接: [https://github.com/meishixiu/note/blob/master/Aria2+AriaNg+Rclone+GoogleDrive/%E4%BD%BF%E7%94%A8%20Aria2%20%E6%90%AD%E5%BB%BA%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD%E5%B9%B6%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%E5%88%B0%20Google%20Drive.md](https://github.com/meishixiu/note/blob/master/Aria2+AriaNg+Rclone+GoogleDrive/%E4%BD%BF%E7%94%A8%20Aria2%20%E6%90%AD%E5%BB%BA%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD%E5%B9%B6%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%E5%88%B0%20Google%20Drive.md)
+转载时请保留原文链接: [https://github.com/meishixiu/note/blob/master/Aria2+AriaNg+Rclone+GoogleDrive/%E4%BD%BF%E7%94%A8%20Aria2%20%E6%90%AD%E5%BB%BA%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD%E5%B9%B6%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%E5%88%B0%20Google%20Drive.md](https://github.com/meishixiu/note/blob/master/Aria2+AriaNg+Rclone+GoogleDrive/%E4%BD%BF%E7%94%A8%20Aria2%20%E6%90%AD%E5%BB%BA%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD%E5%B9%B6%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%E5%88%B0%20Google%20Drive.md)

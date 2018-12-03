@@ -8,6 +8,10 @@ import os
 import json
 import urllib.request
 import urllib.parse
+import smtplib
+from email.mime.text import MIMEText
+from email.header import Header
+from email.utils import formataddr
 import config
 
 def aria2_remove_download_result(api, token, gid):
@@ -23,6 +27,28 @@ def aria2_remove_download_result(api, token, gid):
     else:
         return False
 
+def mail( mail_subject, mail_body, to_addrs ):
+    # 读取配置
+    conf = config.read()
+
+    if conf['enable_mail'] == False :
+        return True
+
+    try:
+        msg = MIMEText( mail_body, 'html', 'utf-8' )
+        msg['From'] = formataddr(["离线下载通知", conf['smtp_username']])
+        msg['To'] = to_addrs
+        msg['Subject'] = Header(mail_subject, 'utf-8')
+        if conf['smtp_mode'] == 1 :
+            server = smtplib.SMTP(conf['smtp_server'], conf['smtp_port'])
+        else:
+            server = smtplib.SMTP_SSL(conf['smtp_server'], conf['smtp_port'])
+        server.login(conf['smtp_username'], conf['smtp_password'])
+        server.sendmail(conf['smtp_username'], to_addrs, msg.as_string())
+        server.quit()  # 关闭连接
+        return True
+    except Exception:
+        return False
 
 def main():
     # 读取配置
@@ -57,6 +83,10 @@ def main():
 
     # 上传完后删除 Aria2 中的任务
     aria2_remove_download_result(conf['api'], conf['token'], upload_task['gid'])
+
+    # 发送邮件通知
+    mail_body = '<b>' + upload_task['task_name'] + '</b> 离线下载任务已完成，并上传到了 <b>' + upload_task['save_path'] + '</b>'
+    mail( conf['mail_subject'], mail_body, conf['to_addrs'] )
 
 if __name__ == "__main__":
     main()
