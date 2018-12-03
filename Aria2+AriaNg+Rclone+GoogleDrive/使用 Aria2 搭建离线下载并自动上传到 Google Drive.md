@@ -103,13 +103,13 @@ q) Quit config
 n/s/q>n
 ```
 
-输入 `n` 后按回车键继续：
+输入 `n` 后按回车键继续
 
 ```shell
 name> gd  #随便填，后面要用到
 ```
 
-输入 `gd` 后按回车键继续：
+输入 `gd` 后按回车键继续
 
 ```shell
 Type of storage to configure.
@@ -213,7 +213,7 @@ Choose a number from below, or type in your own value
 scope>1
 ```
 
-输入 `1` 后按回车键继续：
+输入 `1` 后按回车键继续
 
 ```shell
 ID of the root folder
@@ -223,7 +223,7 @@ Enter a string value. Press Enter for the default ("").
 root_folder_id>
 ```
 
-什么也不填，直接按回车键继续：
+什么也不填，直接按回车键继续
 
 ```shell
 Service Account Credentials JSON file path
@@ -233,7 +233,7 @@ Enter a string value. Press Enter for the default ("").
 service_account_file>
 ```
 
-什么也不填，直接按回车键继续：
+什么也不填，直接按回车键继续
 
 ```
 Edit advanced config? (y/n)
@@ -242,7 +242,7 @@ n) No
 y/n>n
 ```
 
-输入 `n` 后按回车键继续：
+输入 `n` 后按回车键继续
 
 ```shell
 Remote config
@@ -254,7 +254,7 @@ n) No
 y/n>n
 ```
 
-输入 `n` 后按回车键继续：
+输入 `n` 后按回车键继续
 
 ```
 If your browser doesn't open automatically go to the following link: https://accounts.google.com/o/oauth2/auth?access_type=offline&client_id=202264815644.apps.googleusercontent.com&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive&state=82f32ec9a39f1f00487d512287676715
@@ -262,7 +262,7 @@ Log in and authorize rclone for access
 Enter verification code>4/pwBniPjAj1gnadI8njaqWYE1lfxo92Hlw8NnKYGLYlmBfyopyl-mOWs # 填写验证码
 ```
 
-这时会得到一个链接，把这个链接复制出来，在浏览器中打开，登录谷歌账号，得到一个验证码，填写上去后按回车键继续：
+这时会得到一个链接，把这个链接复制出来，在浏览器中打开，登录谷歌账号，得到一个验证码，填写后按回车键继续
 
 ```shell
 Configure this as a team drive?
@@ -271,7 +271,7 @@ n) No
 y/n>y
 ```
 
-输入 `y` 后按回车键继续：
+输入 `y` 后按回车键继续
 
 ```shell
 Fetching team drive list...
@@ -287,7 +287,7 @@ d) Delete this remote
 y/e/d>y
 ```
 
-输入 `y` 后按回车键继续：
+输入 `y` 后按回车键继续
 
 ```shell
 Current remotes:
