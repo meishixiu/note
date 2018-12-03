@@ -1,4 +1,5 @@
-# filter rule file
+# rclone 上传时的文件过滤规则
+# 具体写法请参考官网文档: https://rclone.org/filtering/
 - *.aria2
 - *.url
 - *.torrent
