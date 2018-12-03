@@ -445,7 +445,7 @@ python3 /home/clear_down.py > /dev/null
 
 如果需要下载任务完成后发送邮件通知，可以在 `config.py` 中开启 `"enable_mail": True,` ，并做好相应的配置。
 
- 提示：**如果要使用 QQ 邮箱发件，请在 **电脑上用浏览器** 打开 QQ 邮箱，然后 **邮箱设置 -> 帐户** 中开启 **SMTP 服务** ，并 **生成授权码**，使用授权码来作为这里的 SMTP 密码。如下图所示：
+ 提示：如果要使用 QQ 邮箱发件，请在 **电脑上用浏览器** 打开 QQ 邮箱，然后 **邮箱设置 -> 帐户** 中开启 **SMTP 服务** ，并 **生成授权码**，使用授权码来作为这里的 SMTP 密码。如下图所示：
 
 ![QQ邮箱授权码](https://github.com/meishixiu/note/raw/master/Aria2+AriaNg+Rclone+GoogleDrive/image/QQ邮箱授权码.png)
 
