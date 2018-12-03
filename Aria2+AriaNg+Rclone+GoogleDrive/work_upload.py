@@ -27,7 +27,7 @@ def aria2_remove_download_result(api, token, gid):
     else:
         return False
 
-def mail( mail_subject, mail_body, to_addrs ):
+def send_mail( mail_subject, mail_body, to_addrs ):
     # 读取配置
     conf = config.read()
 
@@ -86,7 +86,7 @@ def main():
 
     # 发送邮件通知
     mail_body = '<b>' + upload_task['task_name'] + '</b> 离线下载任务已完成，并上传到了 <b>' + upload_task['save_path'] + '</b>'
-    mail( conf['mail_subject'], mail_body, conf['to_addrs'] )
+    send_mail( conf['mail_subject'], mail_body, conf['to_addrs'] )
 
 if __name__ == "__main__":
     main()
