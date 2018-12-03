@@ -7,7 +7,6 @@ import sys
 import os
 import json
 import urllib.request
-import urllib.parse
 import smtplib
 from email.mime.text import MIMEText
 from email.header import Header

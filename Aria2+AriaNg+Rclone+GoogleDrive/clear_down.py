@@ -3,13 +3,11 @@
 # 清理下载目录
 # 如果没有 下载、暂停、停止\完成 几种状态的任务时，且下载目录不为空时就清空下载目录，这样可以清理 Aria2 和被 rclone 过滤的小文件。
 
-import redis
 import sys
 import os
 import shutil
 import json
 import urllib.request
-import urllib.parse
 import config
 
 def aria2_get_global_stat(api, token):

@@ -6,7 +6,6 @@ import redis
 import sys
 import os
 import urllib.request
-import urllib.parse
 import json
 import config
 
