@@ -46,7 +46,7 @@ wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/dou
 
 打开配置文件 `/root/.aria2/aria2.conf`，替换为 [aria2.conf](https://github.com/meishixiu/note/raw/master/Aria2+AriaNg+Rclone+GoogleDrive/aria2.conf) 里面的配置；
 
-最后把里面的 Aria2 RPC 密钥 `rpc-secret` 自己随便换一个；
+最后把里面的 Aria2 RPC 密钥 `rpc-secret` 自己随便换一个，然后重启 `Aria2` 使配置生效；
 
 文件的保存路径 `dir` 我用的是后面要安装的 `AriaNg` 网站的一个子目录，这样做的目的是如果需要通过网站在线浏览下载的文件列表，可以稍微改改 `Nginx` 的网站配置来实现，如果没有这样的需求，那可以随意换一个下载目录。
 
