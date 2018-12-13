@@ -44,6 +44,14 @@ yum install -y wget && wget -O install.sh http://download.bt.cn/install/install_
 wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/aria2.sh && chmod +x aria2.sh && bash aria2.sh
 ```
 
+下面是我自己根据上面脚本做的修改版，解决了在开启自动更新 `BT-Tracker 服务器` 时会强制重启 `Aria2` 导致 `Aria2` 任务有可能出现异常的问题：
+
+```shell
+wget -N --no-check-certificate https://raw.githubusercontent.com/meishixiu/note/master/Aria2%2BAriaNg%2BRclone%2BGoogleDrive/aria2.sh && bash aria2.sh
+```
+
+两个脚本任选一个就行。
+
 打开配置文件 `/root/.aria2/aria2.conf`，替换为 [aria2.conf](https://github.com/meishixiu/note/raw/master/Aria2+AriaNg+Rclone+GoogleDrive/aria2.conf) 里面的配置；
 
 最后把里面的 Aria2 RPC 密钥 `rpc-secret` 自己随便换一个，然后重启 `Aria2` 使配置生效；
