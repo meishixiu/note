@@ -8,6 +8,8 @@ import os
 import json
 import urllib.request
 import smtplib
+import telegram
+import time
 from email.mime.text import MIMEText
 from email.header import Header
 from email.utils import formataddr
@@ -49,6 +51,20 @@ def send_mail( mail_subject, mail_body, to_addrs ):
     except Exception:
         return False
 
+def send_tgbot_message( text ):
+    # 读取配置
+    conf = config.read()
+
+    if conf['enable_tg_bot'] == False :
+        return True
+    
+    try:
+        bot = telegram.Bot(token=conf['tg_bot_token'])
+        bot.send_message(chat_id=conf['tg_chat_id'], text=time.strftime("%Y-%m-%d %H:%M:%S") + "\n" + text, parse_mode="HTML")
+        return True
+    except Exception:
+        return False
+
 def main():
     # 读取配置
     conf = config.read()
@@ -83,9 +99,12 @@ def main():
     # 上传完后删除 Aria2 中的任务
     aria2_remove_download_result(conf['api'], conf['token'], upload_task['gid'])
 
+    # 通知内容
+    message = '<b>' + upload_task['task_name'] + '</b> 离线下载任务已完成，并上传到了 <b>' + upload_task['save_path'] + '</b>'
     # 发送邮件通知
-    mail_body = '<b>' + upload_task['task_name'] + '</b> 离线下载任务已完成，并上传到了 <b>' + upload_task['save_path'] + '</b>'
-    send_mail( conf['mail_subject'], mail_body, conf['to_addrs'] )
+    send_mail( conf['mail_subject'], message, conf['to_addrs'] )
+    # 发送 Telegram Bot 通知
+    send_tgbot_message( message )
 
 if __name__ == "__main__":
     main()

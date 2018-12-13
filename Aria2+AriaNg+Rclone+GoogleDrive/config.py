@@ -18,7 +18,7 @@ def read():
                 "redis_password": None, # Redis 连接密码 ( None 是无密码 )
                 
                 # 邮件通知配置
-                "enable_mail": False,                   # 是否启用邮件通知 ( True: 启用； False: 禁用 )
+                "enable_mail": False,                    # 是否启用邮件通知 ( True: 启用； False: 禁用 )
                 "smtp_server": "smtp.qq.com",           # SMTP 服务器
                 "smtp_port": 465,                       # SMTP 端口号 ( 普通模式一般是 25 端口，SSL 模式一般是 465 端口 )
                 "smtp_mode": 2,                         # SMTP 连接模式 ( 1: 使用普通模式； 2: 使用 SSL 模式 ) 
@@ -26,5 +26,10 @@ def read():
                 "smtp_password": "iknkmstvfmdqbida",    # SMTP 密码 ( 如果使用 QQ 邮箱发件，请在电脑上用浏览器打开 QQ 邮箱，然后 邮箱设置 -> 帐户 -> 生成授权码，使用授权码来作为这里的 SMTP 密码 )
                 "to_addrs": "10000@qq.com",             # 收件邮箱
                 "mail_subject": "有离线下载任务已完成",     # 邮件标题
+
+                # Telegram Bot 通知配置
+                "enable_tg_bot": False,                  # 是否启用 Telegram Bot 通知 ( True: 启用； False: 禁用 )
+                "tg_chat_id": "@xxxxx",         # 通知目标 可以是 个人/群组/频道 的 id 或者带 @ 的 username
+                "tg_bot_token": "5224323217:AArRWpcdKsFX-IwOd4XhDTEeMyfhC36tsbw",         # 通过 @BotFather 创建机器人后获得的 API Token
             }
     return config
