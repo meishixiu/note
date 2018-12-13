@@ -19,7 +19,7 @@
 ### 安装宝塔 Linux 面板
 
 ```shell
-yum install -y wget && wget -O install.sh http://download.bt.cn/install/install_6.0.sh && bash install.sh
+$ yum install -y wget && wget -O install.sh http://download.bt.cn/install/install_6.0.sh && bash install.sh
 ```
 
 这是 [宝塔面板官网](https://www.bt.cn/) ，如果如果不会用可以上去看下使用手册。
@@ -41,13 +41,13 @@ yum install -y wget && wget -O install.sh http://download.bt.cn/install/install_
 一键安装 [Aria2](https://aria2.github.io/) ：
 
 ```shell
-wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/aria2.sh && chmod +x aria2.sh && bash aria2.sh
+$ wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/aria2.sh && chmod +x aria2.sh && bash aria2.sh
 ```
 
 下面是我自己根据上面脚本做的修改版，解决了在开启自动更新 `BT-Tracker 服务器` 时会强制重启 `Aria2` 导致 `Aria2` 任务有可能出现异常的问题：
 
 ```shell
-wget -N --no-check-certificate https://raw.githubusercontent.com/meishixiu/note/master/Aria2%2BAriaNg%2BRclone%2BGoogleDrive/aria2.sh && bash aria2.sh
+$ wget -N --no-check-certificate https://raw.githubusercontent.com/meishixiu/note/master/Aria2%2BAriaNg%2BRclone%2BGoogleDrive/aria2.sh && bash aria2.sh
 ```
 
 两个脚本任选一个就行。
@@ -71,9 +71,9 @@ wget -N --no-check-certificate https://raw.githubusercontent.com/meishixiu/note/
 然后把 `AriaNg` 下载到 `/home/wwwroot/lixian.xxx.com` 并解压：
 
 ```shell
-cd /home/wwwroot/lixian.xxx.com
-wget https://github.com/mayswind/AriaNg/releases/download/1.0.0/AriaNg-1.0.0.zip
-unzip AriaNg-1.0.0.zip
+$ cd /home/wwwroot/lixian.xxx.com
+$ wget https://github.com/mayswind/AriaNg/releases/download/1.0.0/AriaNg-1.0.0.zip
+$ unzip AriaNg-1.0.0.zip
 ```
 
 `AriaNg` 的程序安装好了，下面是设置 `AriaNg` ，让它与 `Aria2` 能够连接 ( 通信 )。
@@ -93,13 +93,13 @@ Rclone 是一个用于将文件同步到各大云存储商的命令行工具，�
 安装 Rclone：
 
 ```shell
-curl https://rclone.org/install.sh | sudo bash
+$ curl https://rclone.org/install.sh | sudo bash
 ```
 
 Rclone 的 Google Drive 授权配置：
 
 ```shell
-rclone config
+$ rclone config
 ```
 
 会出现以下信息：
@@ -325,23 +325,23 @@ e/n/d/r/c/s/q>q
 下面是下载 Python3 源码，然后配置、编译、安装步骤：
 
 ```shell
-wget https://www.python.org/ftp/python/3.7.1/Python-3.7.1.tar.xz
+$ wget https://www.python.org/ftp/python/3.7.1/Python-3.7.1.tar.xz
 tar -xvJf  Python-3.7.1.tar.xz
-cd Python-3.7.1
-./configure prefix=/usr/local/python3
-make && make install
+$ cd Python-3.7.1
+$ ./configure prefix=/usr/local/python3
+$ make && make install
 ```
 
 安装完后创建一个软连接到 `/usr/bin/python3` ：
 
 ```shell
-ln -s /usr/local/python3/bin/python3 /usr/bin/python3
+$ ln -s /usr/local/python3/bin/python3 /usr/bin/python3
 ```
 
 使用下面命令查看一下是否生效：
 
 ```shell
-python3 -V
+$ python3 -V
 ```
 
 
@@ -349,20 +349,30 @@ python3 -V
 ### 安装 Python 的 Redis 库
 
 ```shell
-wget https://github.com/andymccurdy/redis-py/archive/3.0.1.zip
-unzip 3.0.1.zip
-cd 3.0.1
-python3 setup.py install
+$ wget https://github.com/andymccurdy/redis-py/archive/3.0.1.zip
+$ unzip 3.0.1.zip
+$ cd 3.0.1
+$ python3 setup.py install
 ```
 
+安装这个库是因为我要使用 `Python` 来操作 `Redis` 。
 
+### 安装 Python 的 python-telegram-bot 库
+
+```shell
+$ git clone https://github.com/python-telegram-bot/python-telegram-bot --recursive
+$ cd python-telegram-bot
+$ python3 setup.py install
+```
+
+安装这个库是因为我要使用 `Python` 来发送离线任务完成通知到 `Telegram` 。
 
 ### 上传处理脚本
 
 下载 [autoupload.sh](https://github.com/meishixiu/note/raw/master/Aria2+AriaNg+Rclone+GoogleDrive/autoupload.sh) 、 [add_upload_queue.py](https://github.com/meishixiu/note/raw/master/Aria2+AriaNg+Rclone+GoogleDrive/add_upload_queue.py) 、 [work_upload.py](https://github.com/meishixiu/note/raw/master/Aria2+AriaNg+Rclone+GoogleDrive/work_upload.py) 、 [clear_down.py](https://github.com/meishixiu/note/raw/master/Aria2+AriaNg+Rclone+GoogleDrive/clear_down.py) 、 [config.py](https://github.com/meishixiu/note/raw/master/Aria2+AriaNg+Rclone+GoogleDrive/config.py)  、[filter-file.txt](https://github.com/meishixiu/note/raw/master/Aria2+AriaNg+Rclone+GoogleDrive/filter-file.txt) 这 6 的文件到放到 `/home` 里，然后给 `autoupload.sh` 执行权限：
 
 ```shell
-chmod +x /home/autoupload.sh
+$ chmod +x /home/autoupload.sh
 ```
 
 由于我在 `Aria2` 的配置文件 `aria2.conf` 里配置了 `on-download-complete=/home/autoupload.sh` ，他是让  `Aria2` 下载任务完成后执行这个 shell 脚本，所以把这些脚本放到 `/home` 里。
@@ -477,7 +487,11 @@ python3 /home/clear_down.py > /dev/null
 
 ![下载结果](https://github.com/meishixiu/note/raw/master/Aria2+AriaNg+Rclone+GoogleDrive/image/下载结果.png)
 
- 
+ ### Telegram Bot 通知
+
+如果需要通过 `Telegram` 来接收离线任务完成通知，可以在 `config.py` 中开启 `"enable_tg_bot": True,` 并做好相应的配置。其中 `tg_chat_id` 是通知目标，它的值可以是 **个人/群组/频道** 的数字 **id** 或者 **带 @ 的 username** ；`tg_bot_token` 则需要私聊 [@BotFather](https://t.me/BotFather) 并创建机器人后获取。下面是 `Telegram` 通知的效果截图：
+
+![Telegram通知](https://github.com/meishixiu/note/raw/master/Aria2+AriaNg+Rclone+GoogleDrive/image/Telegram通知.jpg)
 
 **至此，所有安装、配置的工作已全部完成。**
 
