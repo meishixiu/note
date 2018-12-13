@@ -517,7 +517,7 @@ Update_bt_tracker_cron(){
             sed -i "s@bt-tracker.*@bt-tracker=$bt_tracker_list@g" "${aria2_conf}"
             echo -e "${Info} 更新成功..."
         fi
-		echo -e "${Tip} Aria2 中有任务，暂不重启 Aria2 ，否则可能会造成任务状态异常！但你无需担心，下次自动更新 BT-Tracker 服务器后会再次尝试重启 Aria2。"
+            echo -e "${Tip} Aria2 中有任务，暂不重启 Aria2 ，否则可能会造成任务状态异常！但你无需担心，下次自动更新 BT-Tracker 服务器后会再次尝试重启 Aria2。"
 	fi
 }
 Update_aria2(){
