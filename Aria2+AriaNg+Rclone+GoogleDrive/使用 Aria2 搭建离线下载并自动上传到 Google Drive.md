@@ -361,11 +361,21 @@ chmod +x /home/autoupload.sh
 
 然后根据自己的情况修改 `config.py` 中的配置，比如 **Aria2 RPC 密钥** 、**Aria2 下载目录**、**Google Drive 上传目录**，其他的默认就行了。**Aria2 RPC 地址** 一般也不用修改，使用 `http://127.0.0.1:6800/jsonrpc` 这个就行了，因为就在 VPS 本地执行，使用 127 这个更快一些。
 
-**其他说明：**
+#### 其他说明
 
 - 上传使用的是 `rclone move` 操作，它会在文件上传到 GD 后自动删除 VPS 中的文件 ( 但不会删除被 `filter-file.txt` 过滤的文件 ) 以达到释放硬盘的目的；
 - `add_upload_queue.py` 会把解析磁力链接时最开下载的那个已经无用的 `Aria2` 任务自动删掉，并且还做了很多上传前的细节处理，最后把上传任务添加到上传对列；
 - `work_upload.py` 会在上传完成后把那个对应的已完成的 `Aria2` 任务删掉，因为 VPS 中文件都已经被 `rclone` 移动到了 GD 了，留那个任务也是无用。而且自动清理掉已完成的下任务，可以在所有下载任务都完成后由下面的计划任务自动清理下载目录。
+
+可能有人不太明白，我为什么要搞这么麻烦，还装了 `Redis` 来做上传队列，让下载任务排队上传。网上不是有一些简单的 `shell` 脚本，直接在 `Aria2` 的 `on-download-complete` 配置里指定这个脚本，下载完后让这个脚本调用 `rclone` 来上传文件不就行了？下面我来给大家举个例子：
+
+![上传示例任务](https://github.com/meishixiu/note/raw/master/Aria2+AriaNg+Rclone+GoogleDrive/image/上传示例.png)
+
+比如我现在下载完了一个 `BT` 任务，这个任务总共有 47G 大小，173 个文件，目前正在往 GD 上传。我们通过宝塔面板来看一下此时 VPS 的系统状态：
+
+![系统负载](https://github.com/meishixiu/note/raw/master/Aria2+AriaNg+Rclone+GoogleDrive/image/系统负载.png)
+
+虽然 CPU 什么的都不高，但系统负载却达到了 100% ，宝塔面板加载明显变慢！可以想象，如果不用上传队列加以控制，此时 `Aria2` 又下载好了几个任务，然后又开始用 `rclone` 上传新的文件，而我们之前那个 47G 的大包还没上传完，这几个上传任务同时执行，我们的小鸡还不废掉？这只还仅仅只是各种坑中的一个！
 
 
 
