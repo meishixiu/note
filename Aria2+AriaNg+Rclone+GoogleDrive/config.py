@@ -30,6 +30,6 @@ def read():
                 # Telegram Bot 通知配置
                 "enable_tg_bot": False,                  # 是否启用 Telegram Bot 通知 ( True: 启用； False: 禁用 )
                 "tg_chat_id": "@xxxxx",         # 通知目标 可以是 个人/群组/频道 的 id 或者带 @ 的 username
-                "tg_bot_token": "5224323217:AArRWpcdKsFX-IwOd4XhDTEeMyfhC36tsbw",         # 通过 @BotFather 创建机器人后获得的 API Token
+                "tg_bot_token": "5224323217:AArRWpcdKsFX-IwOd4XhDTEeMyfhC36tsbw",         # 通过私聊 @BotFather 创建机器人后获得的 API Token
             }
     return config
