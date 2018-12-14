@@ -367,6 +367,8 @@ $ python3 setup.py install
 
 安装这个库是因为我要使用 `Python` 来发送离线任务完成通知到 `Telegram` 。
 
+如果不打算使用 `Telegram` 做通知，那可以跳过这一步，并且使用 [work_upload.py](https://raw.githubusercontent.com/meishixiu/note/c56b533e558ba522bd877b481d793c0f38f43909/Aria2%2BAriaNg%2BRclone%2BGoogleDrive/work_upload.py) 和 [config.py](https://raw.githubusercontent.com/meishixiu/note/35d885b2033747352bd0ddfb6365822b41b10eb2/Aria2%2BAriaNg%2BRclone%2BGoogleDrive/config.py)  这两个文件来代替下面的 `work_upload.py` 和 `config.py` 文件。
+
 ### 上传处理脚本
 
 下载 [autoupload.sh](https://github.com/meishixiu/note/raw/master/Aria2+AriaNg+Rclone+GoogleDrive/autoupload.sh) 、 [add_upload_queue.py](https://github.com/meishixiu/note/raw/master/Aria2+AriaNg+Rclone+GoogleDrive/add_upload_queue.py) 、 [work_upload.py](https://github.com/meishixiu/note/raw/master/Aria2+AriaNg+Rclone+GoogleDrive/work_upload.py) 、 [clear_down.py](https://github.com/meishixiu/note/raw/master/Aria2+AriaNg+Rclone+GoogleDrive/clear_down.py) 、 [config.py](https://github.com/meishixiu/note/raw/master/Aria2+AriaNg+Rclone+GoogleDrive/config.py)  、[filter-file.txt](https://github.com/meishixiu/note/raw/master/Aria2+AriaNg+Rclone+GoogleDrive/filter-file.txt) 这 6 的文件到放到 `/home` 里，然后给 `autoupload.sh` 执行权限：
