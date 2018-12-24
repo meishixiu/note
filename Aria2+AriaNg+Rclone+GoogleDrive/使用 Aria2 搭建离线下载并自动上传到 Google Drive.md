@@ -276,10 +276,10 @@ Enter verification code>4/pwBniPjAj1gnadI8njaqWYE1lfxo92Hlw8NnKYGLYlmBfyopyl-mOW
 Configure this as a team drive?
 y) Yes
 n) No
-y/n>y
+y/n>n
 ```
 
-输入 `y` 后按回车键继续
+输入 `n` 后按回车键继续
 
 ```shell
 Fetching team drive list...
