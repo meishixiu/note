@@ -336,6 +336,7 @@ $ make && make install
 
 ```shell
 $ ln -s /usr/local/python3/bin/python3 /usr/bin/python3
+$ ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3
 ```
 
 使用下面命令查看一下是否生效：
