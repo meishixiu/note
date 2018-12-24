@@ -350,10 +350,7 @@ $ python3 -V
 ### 安装 Python 的 Redis 库
 
 ```shell
-$ wget https://github.com/andymccurdy/redis-py/archive/3.0.1.zip
-$ unzip 3.0.1.zip
-$ cd 3.0.1
-$ python3 setup.py install
+$ pip3 install redis
 ```
 
 安装这个库是因为我要使用 `Python` 来操作 `Redis` 。
@@ -361,9 +358,7 @@ $ python3 setup.py install
 ### 安装 Python 的 python-telegram-bot 库
 
 ```shell
-$ git clone https://github.com/python-telegram-bot/python-telegram-bot --recursive
-$ cd python-telegram-bot
-$ python3 setup.py install
+$ pip3 install python-telegram-bot --upgrade
 ```
 
 安装这个库是因为我要使用 `Python` 来发送离线任务完成通知到 `Telegram` 。
