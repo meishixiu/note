@@ -325,9 +325,9 @@ e/n/d/r/c/s/q>q
 下面是下载 Python3 源码，然后配置、编译、安装步骤：
 
 ```shell
-$ wget https://www.python.org/ftp/python/3.7.1/Python-3.7.1.tar.xz
-tar -xvJf  Python-3.7.1.tar.xz
-$ cd Python-3.7.1
+$ wget https://www.python.org/ftp/python/3.6.8/Python-3.6.8.tar.xz
+tar -xvJf Python-3.6.8.tar.xz
+$ cd Python-3.6.8
 $ ./configure prefix=/usr/local/python3
 $ make && make install
 ```
