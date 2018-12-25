@@ -358,7 +358,7 @@ $ pip3 install redis
 ### 安装 Python 的 python-telegram-bot 库
 
 ```shell
-$ pip3 install python-telegram-bot --upgrade
+$ pip3 install python-telegram-bot
 ```
 
 安装这个库是因为我要使用 `Python` 来发送离线任务完成通知到 `Telegram` 。
