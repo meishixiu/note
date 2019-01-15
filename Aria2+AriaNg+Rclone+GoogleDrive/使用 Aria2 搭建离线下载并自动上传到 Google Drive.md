@@ -47,7 +47,7 @@ $ wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/d
 下面是我自己根据上面脚本做的修改版，解决了在开启自动更新 `BT-Tracker 服务器` 时会强制重启 `Aria2` 导致 `Aria2` 任务有可能出现异常的问题：
 
 ```shell
-$ wget -N --no-check-certificate https://raw.githubusercontent.com/meishixiu/note/master/Aria2%2BAriaNg%2BRclone%2BGoogleDrive/aria2.sh && bash aria2.sh
+$ wget -N --no-check-certificate https://raw.githubusercontent.com/meishixiu/note/master/Aria2%2BAriaNg%2BRclone%2BGoogleDrive/aria2.sh && chmod +x aria2.sh && bash aria2.sh
 ```
 
 两个脚本任选一个就行。
