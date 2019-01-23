@@ -326,7 +326,7 @@ e/n/d/r/c/s/q>q
 
 ```shell
 $ wget https://www.python.org/ftp/python/3.6.8/Python-3.6.8.tar.xz
-tar -xvJf Python-3.6.8.tar.xz
+$ tar -xvJf Python-3.6.8.tar.xz
 $ cd Python-3.6.8
 $ ./configure prefix=/usr/local/python3
 $ make && make install
